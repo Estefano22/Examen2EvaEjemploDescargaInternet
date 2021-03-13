@@ -7,11 +7,9 @@ import com.cbellmont.ejemplodescargainternet.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 
 interface MainActivityInterface {
-    suspend fun onFilmsReceived(listFilms : List<Film>)
+    suspend fun onFilmsReceived(listPersoanjesstarswars : List<Persoanjesstarswars>)
 }
 
-// IMPORTANT: Passing the activity to a the receiver is not a good practice, it may cause issues
-// with the activity-s lifecycle. We are doing it just to keep the focus on the target of this example
 class MainActivity : AppCompatActivity(), MainActivityInterface {
 
     private lateinit var binding: ActivityMainBinding
@@ -22,15 +20,15 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
         setContentView(binding.root)
 
         lifecycleScope.launch(Dispatchers.IO){
-            GetAllFilms.send(this@MainActivity)
+            GetAllPersonajes.send(this@MainActivity)
         }
     }
 
-    override suspend fun onFilmsReceived(listFilms : List<Film>) {
+    override suspend fun onFilmsReceived(listPersoanjesstarswars : List<Persoanjesstarswars>) {
         withContext(Dispatchers.Main){
-            binding.tvFilms.text = ""
-            listFilms.forEach {
-                binding.tvFilms.append(it.toString())
+            binding.personajes.text = ""
+            listPersoanjesstarswars.forEach {
+                binding.personajes.append(it.toString())
             }
         }
 
