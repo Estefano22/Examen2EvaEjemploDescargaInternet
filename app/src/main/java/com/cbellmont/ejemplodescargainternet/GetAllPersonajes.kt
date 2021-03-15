@@ -45,7 +45,7 @@ class GetAllPersonajes {
 
                                 val list = gson.fromJson<List<Persoanjesstarswars>>(results.toString(), itemType)
 
-                                mainActivity?.onFilmsReceived(list)
+                                mainActivity?.onPersonajesReceived(list)
                             }
                         }
                     }

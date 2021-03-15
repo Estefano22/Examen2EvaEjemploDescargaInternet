@@ -7,7 +7,7 @@ import com.cbellmont.ejemplodescargainternet.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 
 interface MainActivityInterface {
-    suspend fun onFilmsReceived(listPersoanjesstarswars : List<Persoanjesstarswars>)
+    suspend fun onPersonajesReceived(listPersoanjesstarswars : List<Persoanjesstarswars>)
 }
 
 class MainActivity : AppCompatActivity(), MainActivityInterface {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
         }
     }
 
-    override suspend fun onFilmsReceived(listPersoanjesstarswars : List<Persoanjesstarswars>) {
+    override suspend fun onPersonajesReceived(listPersoanjesstarswars : List<Persoanjesstarswars>) {
         withContext(Dispatchers.Main){
             binding.personajes.text = ""
             listPersoanjesstarswars.forEach {
